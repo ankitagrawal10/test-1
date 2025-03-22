@@ -1,27 +1,33 @@
-name: Reusable Test Workflow
+name: Python Testing with pytest
 
 on:
-  workflow_call:  # This makes the workflow reusable
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  run-linters:
-    name: Run linters
+  test:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v2
         
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.12.3'
-     
+          python-version: '3.12'  
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements.txt  # Install all dependencies from requirements.txt
+          pip install pytest  # Ensure pytest is installed
 
-      - name: Run tests (pytest)
+      - name: Run tests with pytest
         run: |
-          pytest --maxfail=1 --disable-warnings -q 
+          pytest --maxfail=1 --disable-warnings -q  
