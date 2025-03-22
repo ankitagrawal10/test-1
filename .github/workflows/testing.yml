@@ -1,18 +1,20 @@
-name: test the application
+name: Test the Application
 
 on:
-  workflow_dispatch:  
+  workflow_dispatch:  # Allows you to manually trigger this workflow
 
 jobs:
   call-repo-1-workflow:
     name: Call Repo-1 Test Workflow
     uses: ./.github/workflows/main.yml
+    with:
+      some_input: 'value'  # Optional input to pass to the main workflow
 
   display-test-results:
     name: Display Test Results
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the coded
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Display test results from pytest
