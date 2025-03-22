@@ -1,0 +1,20 @@
+name: test the application
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  call-repo-1-workflow:
+    name: Call Repo-1 Test Workflow
+    uses: ./.github/workflows/test.yml
+
+  display-test-results:
+    name: Display Test Results
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the coded
+        uses: actions/checkout@v4
+
+      - name: Display test results from pytest
+        run: |
+          python app.py
