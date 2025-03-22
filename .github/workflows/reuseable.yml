@@ -36,7 +36,5 @@ jobs:
 
       - name: Run Python Project
         run: |
-          ${{ inputs.run_command }} <<EOF
-          https://www.google.com
-          EOF
+         echo -e "${{ inputs.eof_input }}" | ${{ inputs.run_command }}
 
