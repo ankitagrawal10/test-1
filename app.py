@@ -1,17 +1,42 @@
+from flask import Flask, render_template_string, request
 import requests
 
-def fetch_website(url):
+# Create a Flask application instance
+app = Flask(__name__)
+
+# Define a route for the homepage
+@app.route('/')
+def home():
+    return '''
+        <h1>Simple Python Web App</h1>
+        <form action="/fetch" method="post">
+            <label for="url">Enter a URL:</label>
+            <input type="text" id="url" name="url" required>
+            <input type="submit" value="Fetch">
+        </form>
+    '''
+
+# Define a route to handle the form submission
+@app.route('/fetch', methods=['POST'])
+def fetch_website():
+    url = request.form['url']
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            print(f"Website content: \n{response.text[:500]}...")  # Print the first 500 characters of the page
+            content = response.text[:500]  # Show the first 500 characters of the website
+            return f'''
+                <h1>Website Content</h1>
+                <p><strong>Content from {url}:</strong></p>
+                <pre>{content}</pre>
+                <a href="/">Go back</a>
+            '''
         else:
-            print(f"Error: Unable to fetch {url} (Status Code: {response.status_code})")
+            return f"Error: Unable to fetch {url} (Status Code: {response.status_code})"
     except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
+        return f"Error: {e}"
 
-if __name__ == "__main__":
-    url = input("Enter a URL to fetch: ")
-    fetch_website(url)
+# Run the application
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
