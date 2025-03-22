@@ -11,5 +11,5 @@ jobs:
     with:
       python_version: '3.12'
       run: |
-        echo -e "5\n10" | python app.py  
+         python app.py  
      
