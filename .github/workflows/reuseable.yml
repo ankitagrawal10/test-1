@@ -42,7 +42,7 @@ jobs:
 
       - name: Start Flask with ngrok
         run: |
-         ngrok config add-authtoken 2ugRhrxf2KKivmZEE7mqbuSWO7f_4dwCNAdmSQ5UM5gHsdU2es
+         ngrok config add-authtoken 2ugRhrxf2KKivmZEE7mqbuSWO7f_4dwCNAdmSQ5UM5gHsdU2e
          ngrok http 5000 > /dev/null &
          sleep 5
          curl -s http://127.0.0.1:4040/api/tunnels  # Get the public URL
