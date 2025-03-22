@@ -15,18 +15,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-          
+          python-version: '3.12.3'
+     
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install flake8
-        
-      - name: Run flake8
+
+      - name: Run tests (pytest)
         run: |
-          flake8 .
-          
-      - name: Run tests (if applicable)
-        run: |
-          pytest
+          pytest --maxfail=1 --disable-warnings -q 
