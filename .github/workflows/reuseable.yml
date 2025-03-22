@@ -34,10 +34,6 @@ jobs:
           pip install pytest
           pytest
 
-      - name: Run Python Project
-        run: |
-          ${{ inputs.run_command }}
-
       - name: Install ngrok
         run: |
          curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
@@ -50,4 +46,9 @@ jobs:
          ngrok http 5000 > /dev/null &
          sleep 5
          curl -s http://127.0.0.1:4040/api/tunnels  # Get the public URL
+
+
+      - name: Run Python Project
+        run: |
+          ${{ inputs.run_command }}
 
