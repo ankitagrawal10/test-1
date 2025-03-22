@@ -3,7 +3,7 @@ name: Project-1 Workflow
 on:
   push:
     branches:
-      - master
+      - prod
 
 jobs:
   use-reusable-pipeline:
