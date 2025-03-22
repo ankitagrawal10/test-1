@@ -1,5 +1,5 @@
 import pytest
-from app import app
+from app import app.py
 
 def test_homepage():
     client = app.test_client()
