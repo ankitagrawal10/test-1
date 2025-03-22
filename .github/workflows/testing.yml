@@ -1,22 +1,25 @@
-name: Test the Application
+# .github/workflows/testing.yml in Repo-2
+name: Trigger Repo-1 Test Workflow
 
 on:
-  workflow_dispatch:  # Allows you to manually trigger this workflow
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
   call-repo-1-workflow:
     name: Call Repo-1 Test Workflow
-    uses: ./.github/workflows/main.yml
+    uses: ./.github/workflows/main.yml  # Reference Repo-1's workflow
     with:
-      some_input: 'value'  # Optional input to pass to the main workflow
+      some_input: 'value'  # Pass the necessary inputs to Repo-1's workflow
 
   display-test-results:
     name: Display Test Results
     runs-on: ubuntu-latest
+    needs: call-repo-1-workflow  
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Display test results from pytest
         run: |
-          python app.py
+          python app.py  # Run your app if needed or show test results
