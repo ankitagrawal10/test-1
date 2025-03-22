@@ -11,10 +11,6 @@ on:
         description: 'Command to run the Python project'
         required: true
         type: string
-      eof_input: 
-        description: 'Input for the CLI application'
-        required: true
-        type: string  # Ensure it's a string
     secrets:
       token:
         required: false  
@@ -40,5 +36,5 @@ jobs:
 
       - name: Run Python Project
         run: |
-         echo -e "${{ inputs.eof_input }}" | ${{ inputs.run_command }}
+          ${{ inputs.run_command }}
 
