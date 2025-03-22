@@ -1,14 +1,16 @@
-name: Python Tests
+name: Main Workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_call:  # This makes it reusable
+    inputs:
+      some_input:
+        description: 'A custom input for the workflow'
+        required: true
+        type: string
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -22,7 +24,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest
 
       - name: Run tests
         run: |
