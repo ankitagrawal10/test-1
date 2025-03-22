@@ -6,7 +6,7 @@ on:
 jobs:
   call-repo-1-workflow:
     name: Call Repo-1 Test Workflow
-    uses: ./.github/workflows/test.yml
+    uses: ./.github/workflows/main.yml
 
   display-test-results:
     name: Display Test Results
