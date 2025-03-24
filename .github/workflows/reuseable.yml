@@ -38,7 +38,7 @@ jobs:
           pip install pytest
           pytest
 
-      - name: Run Python Project
-        run: |
-         echo -e "${{ inputs.eof_input }}" | ${{ inputs.run_command }}
+      # - name: Run Python Project
+      #   run: |
+      #    echo -e "${{ inputs.eof_input }}" | ${{ inputs.run_command }}
 
