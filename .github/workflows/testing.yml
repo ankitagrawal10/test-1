@@ -19,4 +19,5 @@ jobs:
     steps:
       - name: Display test results from pytest
         run: |
+          pip show flask
           python app.py  
