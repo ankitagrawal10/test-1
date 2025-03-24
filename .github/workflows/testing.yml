@@ -6,20 +6,15 @@ on:
 
 jobs:
   call-repo-1-workflow:
-    name: Call Repo-1 Test Workflow
-    uses: ./.github/workflows/main.yml  # Reference Repo-1's workflow
+    uses: ankitagrawal10/test-1/.github/workflows/reuseable.yml@master 
     with:
-      some_input: 'value'  # Pass the necessary inputs to Repo-1's workflow
+      python_version: '3.12'
 
   display-test-results:
-    name: Display Test Results
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: call-repo-1-workflow  
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Display test results from pytest
         run: |
-          python app.py  # Run your app if needed or show test results
+          python app.py  
