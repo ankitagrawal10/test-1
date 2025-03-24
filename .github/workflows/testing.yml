@@ -2,7 +2,9 @@
 name: Trigger Repo-1 Test Workflow
 
 on:
-  workflow_dispatch:  # Allows manual trigger
+  push:
+    branches:
+      - main
 
 jobs:
   call-repo-1-workflow:
