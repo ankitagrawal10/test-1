@@ -20,4 +20,6 @@ jobs:
       - name: Display test results from pytest
         run: |
           python --version
+          source venv/bin/activate
+          flask --version
           python app.py  
