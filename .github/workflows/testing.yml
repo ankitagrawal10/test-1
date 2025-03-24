@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Run python code
         run: | 
-         echo -e "5" | python app.py
-         echo -e "10" | python app.py
+         echo -e "5\n10" | python app.py
+
 
      
