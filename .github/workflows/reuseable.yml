@@ -9,7 +9,7 @@ on:
         type: string
       run_command:
         description: 'Command to run the Python project'
-        required: true
+        required: false
         type: string
       eof_input: 
         description: 'Input for the CLI application'
