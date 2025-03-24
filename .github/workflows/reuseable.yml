@@ -7,17 +7,14 @@ on:
         description: 'Python version to use'
         required: true
         type: string
-      run_command:
-        description: 'Command to run the Python project'
-        required: false
-        type: string
-      eof_input: 
-        description: 'Input for the CLI application'
-        required: false
-        type: string  # Ensure it's a string
-    secrets:
-      token:
-        required: false  
+      # run_command:
+      #   description: 'Command to run the Python project'
+      #   required: false
+      #   type: string
+      # eof_input: 
+      #   description: 'Input for the CLI application'
+      #   required: false
+      #   type: string  # Ensure it's a string
 
 jobs:
   setup-and-run:
