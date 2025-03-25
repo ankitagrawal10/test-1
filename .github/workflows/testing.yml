@@ -21,4 +21,4 @@ jobs:
         run: |
           python --version
           flask --version
-          python app.py  
+          nohup python app.py &
